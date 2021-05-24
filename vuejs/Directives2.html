@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" conte nt="width=device-width, initial-scale=1.0" />
+        <title>Vue.js</title>
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    </head>
+    <body>
+        <div id="app">
+            <h2>{{msg}}</h2>
+            <h2 v-text=" 'v-text =' + msg"></h2>
+            <h2 v-html=" 'v-html =' + msg2"></h2>
+            <!-- 변경 불가능 -->
+            <h2 v-once>{{msg}}</h2>
+            <h2>{{msg.split('').reverse().join('')}}</h2>
+            <h2>{{ changeMsg('new msg')}}</h2>
+            <h2 v-text="msg.split('').reverse().join('')"></h2>
+
+            <h2>{{number > 10? number+10 : number*10}}</h2>
+            <h2 v-text="number > 10? number+10 : number*10"></h2>
+        </div>
+
+        <script>
+            const vm = new Vue({
+                el: '#app',
+                data: {
+                    number: 10,
+                    msg: 'Hello',
+                    msg2: '<font color="red"> RED Hello </font>',
+                },
+                methods: {
+                    changeMsg: function (newMsg) {
+                        return (this.msg = newMsg);
+                    },
+                },
+            });
+
+            console.dir(vm);
+        </script>
+    </body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" conte nt="width=device-width, initial-scale=1.0" />
+        <title>Vue.js</title>
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    </head>
+    <body>
+        <div id="app">
+            <!-- v-model : 양방향 -->
+            <h3>1. 한 줄 메시지</h3>
+            <input v-model="message" placeholder="여기를 수정해보세요" />
+            <p>message: {{ message }}</p>
+            <br />
+
+            <h3>2. 여러 줄 메시지</h3>
+            <textarea v-model="messages" placeholder="여러줄을 입력해보세요"></textarea>
+            <p style="white-space: pre-line">{{ messages }}</p>
+            <br />
+
+            <h3>3. 체크박스</h3>
+            <input type="checkbox" id="yeewon" value="yeewon" v-model="checkedNames" />
+            <label for="yeewon">Yeewon</label>
+            <input type="checkbox" id="yoonseo" value="yoonseo" v-model="checkedNames" />
+            <label for="yoonseo">Yoonseo</label>
+            <input type="checkbox" id="wonyoung" value="wonyoung" v-model="checkedNames" />
+            <label for="wonyoung">Wonyoung</label>
+            <br />
+            <span>체크한 이름: {{ checkedNames }}</span>
+            <br />
+
+            <h3>4. 라디오</h3>
+            <input type="radio" id="white" value="White" v-model="picked" />
+            <label for="white">White</label>
+            <br />
+            <input type="radio" id="black" value="Black" v-model="picked" />
+            <label for="black">Black</label>
+            <br />
+            <span>Picked: {{ picked }}</span>
+            <br />
+
+            <h3>5. 셀렉트</h3>
+            <select v-model="selected">
+                <option disabled value="">Please select one</option>
+                <option>A</option>
+                <option>B</option>
+                <option>C</option>
+            </select>
+            <br />
+            <span>Selected: {{ selected }}</span>
+            <br />
+
+            <h3>6. v-for를 이용한 동적 옵션 렌더링</h3>
+            <select v-model="selected2">
+                <option v-for="option in options" v-bind:value="option.value">{{ option.text}}</option>
+            </select>
+            <span>Selected student's id: {{selected2}}</span>
+        </div>
+
+        <script>
+            new Vue({
+                el: '#app',
+                data: {
+                    message: '',
+                    messages: '',
+                    checkedNames: [],
+                    picked: '',
+                    selected: '',
+
+                    selected2: '학번',
+                    options: [
+                        {text: 'Nancy', value: '20201234'},
+                        {text: 'Sindy', value: '20205678'},
+                        {text: 'Mike', value: '20209123'},
+                    ],
+                },
+            });
+        </script>
+    </body>
+</html>
